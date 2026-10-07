@@ -385,6 +385,10 @@ main {
    HEADER
 ========================================================= */
 
+/* =========================================================
+   HEADER
+========================================================= */
+
 .header_container {
   width: 100%;
   min-height: 76px;
@@ -407,8 +411,7 @@ main {
   box-sizing: border-box;
 
   box-shadow:
-    0 2px 15px
-    rgba(6, 22, 64, 0.06);
+    0 2px 15px rgba(6, 22, 64, 0.06);
 }
 
 
@@ -428,9 +431,7 @@ main {
 }
 
 
-.header_container
-  > .logo
-  > img {
+.header_container > .logo > img {
   width: 100%;
   height: auto;
 
@@ -442,20 +443,14 @@ main {
    NAVIGATION
 ========================================================= */
 
-.header_container
-  > .header_links {
+.header_container > .header_links {
   flex: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap:
-    clamp(
-      16px,
-      2vw,
-      32px
-    );
+  gap: clamp(16px, 2vw, 32px);
 }
 
 
@@ -473,14 +468,12 @@ main {
 
   gap: 5px;
 
-  padding:
-    27px 0 24px;
+  padding: 27px 0 24px;
 
   border: none;
   outline: none;
 
-  background:
-    transparent;
+  background: transparent;
 
   color: #485a71;
 
@@ -488,12 +481,7 @@ main {
 
   font-family: inherit;
 
-  font-size:
-    clamp(
-      0.82rem,
-      0.95vw,
-      0.95rem
-    );
+  font-size: clamp(0.82rem, 0.95vw, 0.95rem);
 
   font-weight: 700;
 
@@ -501,12 +489,11 @@ main {
 
   cursor: pointer;
 
-  transition:
-    color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 
-/* UNDERLINE */
+/* NAV UNDERLINE */
 
 .header_container
   > .header_links
@@ -521,11 +508,9 @@ main {
   width: 0;
   height: 2px;
 
-  background:
-    var(--color-accent);
+  background: var(--color-accent);
 
-  transition:
-    width 0.25s ease;
+  transition: width 0.25s ease;
 }
 
 
@@ -571,35 +556,27 @@ main {
 /* CHEVRON */
 
 .tools_chevron {
-  transition:
-    transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 
-.tools.tools_open
-  .tools_chevron {
-  transform:
-    rotate(180deg);
+.tools.tools_open .tools_chevron {
+  transform: rotate(180deg);
 }
 
 
 /* =========================================================
-   MEGA MENU
+   TOOLS MEGA MENU
 ========================================================= */
 
 .tools_mega_menu {
   position: absolute;
 
-  top:
-    calc(100% - 5px);
+  top: calc(100% - 5px);
 
   left: 50%;
 
-  width:
-    min(
-      1030px,
-      calc(100vw - 60px)
-    );
+  width: min(1030px, calc(100vw - 60px));
 
   padding-top: 14px;
 
@@ -632,7 +609,7 @@ main {
 
 
 /* =========================================================
-   MEGA MENU BOX
+   MEGA MENU INNER
 ========================================================= */
 
 .tools_mega_inner {
@@ -643,23 +620,19 @@ main {
   grid-template-columns:
     repeat(5, minmax(0, 1fr));
 
-  padding:
-    30px 24px 28px;
+  padding: 30px 24px 28px;
 
   border:
-    1px solid
-    rgba(168, 131, 92, 0.3);
+    1px solid rgba(168, 131, 92, 0.3);
 
   border-radius: 18px;
 
-  background:
-    #ffffff;
+  background: #ffffff;
 
   box-sizing: border-box;
 
   box-shadow:
-    0 22px 60px
-    rgba(6, 22, 64, 0.16);
+    0 22px 60px rgba(6, 22, 64, 0.16);
 }
 
 
@@ -670,12 +643,10 @@ main {
 .tools_group {
   min-width: 0;
 
-  padding:
-    0 20px;
+  padding: 0 20px;
 
   border-right:
-    1px solid
-    rgba(168, 131, 92, 0.22);
+    1px solid rgba(168, 131, 92, 0.22);
 }
 
 
@@ -723,14 +694,13 @@ main {
 }
 
 
-/* UNDER TITLE LINE */
+/* LINE BELOW TITLE */
 
 .tools_group_line {
   width: 100%;
   height: 1px;
 
-  margin:
-    12px 0 16px;
+  margin: 12px 0 16px;
 
   background:
     rgba(168, 131, 92, 0.2);
@@ -785,8 +755,7 @@ main {
 .tool_link:hover {
   color: #061640;
 
-  transform:
-    translateX(3px);
+  transform: translateX(3px);
 }
 
 
@@ -794,8 +763,7 @@ main {
    HEADER BUTTONS
 ========================================================= */
 
-.header_container
-  > .header_buttons {
+.header_container > .header_buttons {
   flex-shrink: 0;
 
   display: flex;
@@ -805,24 +773,20 @@ main {
 }
 
 
-/* LOGIN */
+/* LOGIN BUTTON */
 
 .header_container
   > .header_buttons
   > .login_btn {
   min-height: 38px;
 
-  padding:
-    0 18px;
+  padding: 0 18px;
 
-  border:
-    1px solid
-    #18264d;
+  border: 1px solid #18264d;
 
   border-radius: 6px;
 
-  background:
-    transparent;
+  background: transparent;
 
   color: #18264d;
 
@@ -843,16 +807,14 @@ main {
 .header_container
   > .header_buttons
   > .login_btn:hover {
-  background:
-    #18264d;
+  background: #18264d;
 
-  color:
-    #ffffff;
+  color: #ffffff;
 }
 
 
 /* =========================================================
-   LIST PROPERTY
+   LIST PROPERTY BUTTON
 ========================================================= */
 
 .header_container
@@ -866,17 +828,14 @@ main {
 
   gap: 8px;
 
-  padding:
-    0 14px;
+  padding: 0 14px;
 
   border:
-    1px solid
-    var(--color-accent);
+    1px solid var(--color-accent);
 
   border-radius: 6px;
 
-  background:
-    var(--color-accent);
+  background: var(--color-accent);
 
   color: #061640;
 
@@ -889,29 +848,42 @@ main {
   white-space: nowrap;
 
   cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 
-/* FREE */
+.header_container
+  > .header_buttons
+  > .list_property_btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 15px rgba(201, 169, 110, 0.28);
+}
+
+
+/* FREE TAG */
 
 .header_container
   > .header_buttons
   > .list_property_btn
   > .free_btn {
-  padding:
-    3px 7px;
+  padding: 3px 7px;
 
   border-radius: 4px;
 
-  background:
-    #061640;
+  background: #061640;
 
-  color:
-    var(--color-accent);
+  color: var(--color-accent);
 
   font-size: 0.58rem;
 
   font-weight: 700;
+
+  letter-spacing: 0.04em;
 }
 
 
@@ -931,16 +903,13 @@ main {
   justify-content: center;
 
   border:
-    1px solid
-    rgba(24, 38, 77, 0.15);
+    1px solid rgba(24, 38, 77, 0.15);
 
   border-radius: 8px;
 
-  background:
-    #ffffff;
+  background: #ffffff;
 
-  color:
-    #18264d;
+  color: #18264d;
 
   cursor: pointer;
 }
@@ -956,19 +925,16 @@ main {
   .header_container {
     gap: 18px;
 
-    padding:
-      0 3%;
+    padding: 0 3%;
   }
 
 
-  .header_container
-    > .logo {
+  .header_container > .logo {
     width: 125px;
   }
 
 
-  .header_container
-    > .header_links {
+  .header_container > .header_links {
     gap: 15px;
   }
 
@@ -976,8 +942,17 @@ main {
   .header_container
     > .header_links
     > .actual_links {
-    font-size:
-      0.78rem;
+    font-size: 0.78rem;
+  }
+
+
+  .header_container
+    > .header_buttons
+    > .login_btn,
+  .header_container
+    > .header_buttons
+    > .list_property_btn {
+    font-size: 0.72rem;
   }
 
 
@@ -988,21 +963,19 @@ main {
 
 
   .tools_group {
-    padding:
-      0 14px;
+    padding: 0 14px;
   }
 
 
   .tool_link {
-    font-size:
-      0.85rem;
+    font-size: 0.85rem;
   }
 
 }
 
 
 /* =========================================================
-   MOBILE NAVIGATION
+   TABLET / MOBILE
    <= 900PX
 ========================================================= */
 
@@ -1011,8 +984,7 @@ main {
   .header_container {
     min-height: 70px;
 
-    padding:
-      0 24px;
+    padding: 0 24px;
 
     gap: 15px;
   }
@@ -1020,15 +992,14 @@ main {
 
   /* LOGO */
 
-  .header_container
-    > .logo {
+  .header_container > .logo {
     width: 125px;
 
     margin-right: auto;
   }
 
 
-  /* MOBILE MENU BUTTON */
+  /* HAMBURGER */
 
   .menu_toggle {
     display: flex;
@@ -1037,60 +1008,74 @@ main {
   }
 
 
-  /* HEADER BUTTONS */
+  /* BUTTONS */
 
-  .header_container
-    > .header_buttons {
+  .header_container > .header_buttons {
     order: 2;
 
     margin-left: auto;
   }
 
 
-  /* NAV */
+  /* =====================================================
+     MOBILE NAV
+  ===================================================== */
 
-  .header_container
-    > .header_links {
-    position: absolute;
+  .header_container > .header_links {
+    position: fixed;
 
-    top: 100%;
+    top: 70px;
     left: 0;
+    right: 0;
 
     width: 100%;
 
+    height:
+      calc(100dvh - 70px);
+
     max-height:
-      calc(100vh - 70px);
+      calc(100dvh - 70px);
 
     display: flex;
     flex-direction: column;
 
     align-items: stretch;
+    justify-content: flex-start;
 
     gap: 0;
 
     padding:
-      10px 24px 20px;
+      10px 24px 40px;
 
-    overflow-y: auto;
-
-    background:
-      #ffffff;
+    background: #ffffff;
 
     border-top:
-      1px solid
-      rgba(24, 38, 77, 0.07);
+      1px solid rgba(24, 38, 77, 0.07);
 
     box-shadow:
-      0 15px 30px
-      rgba(6, 22, 64, 0.1);
+      0 15px 30px rgba(6, 22, 64, 0.1);
 
     box-sizing: border-box;
+
+
+    /* IMPORTANT MOBILE SCROLL FIX */
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-y: contain;
+
+    touch-action: pan-y;
+
+
+    /* CLOSED */
 
     opacity: 0;
     visibility: hidden;
 
-    transform:
-      translateY(-10px);
+    transform: translateY(-10px);
 
     pointer-events: none;
 
@@ -1101,42 +1086,42 @@ main {
   }
 
 
+  /* NAV OPEN */
+
   .header_container
     > .header_links.open {
     opacity: 1;
     visibility: visible;
 
-    transform:
-      translateY(0);
+    transform: translateY(0);
 
     pointer-events: auto;
   }
 
 
-  /* MOBILE NAV LINKS */
+  /* MOBILE LINKS */
 
   .header_container
     > .header_links
     > .actual_links {
     width: 100%;
 
-    justify-content:
-      flex-start;
+    flex-shrink: 0;
 
-    padding:
-      15px 4px;
+    justify-content: flex-start;
+
+    padding: 15px 4px;
 
     border-bottom:
-      1px solid
-      rgba(24, 38, 77, 0.07);
+      1px solid rgba(24, 38, 77, 0.07);
 
-    font-size:
-      0.95rem;
+    font-size: 0.95rem;
 
-    box-sizing:
-      border-box;
+    box-sizing: border-box;
   }
 
+
+  /* REMOVE DESKTOP UNDERLINE */
 
   .header_container
     > .header_links
@@ -1146,7 +1131,20 @@ main {
 
 
   /* =====================================================
-     MOBILE TOOL MEGA MENU
+     MOBILE TOOLS BUTTON
+  ===================================================== */
+
+  .header_container
+    > .header_links
+    > .tools {
+    flex-shrink: 0;
+
+    justify-content: flex-start;
+  }
+
+
+  /* =====================================================
+     MOBILE TOOLS MENU
   ===================================================== */
 
   .tools_mega_menu {
@@ -1155,6 +1153,8 @@ main {
     width: 100%;
 
     padding: 0;
+
+    margin: 0;
 
     opacity: 1;
     visibility: visible;
@@ -1167,40 +1167,59 @@ main {
 
     overflow: hidden;
 
+    flex-shrink: 0;
+
     transition:
-      max-height 0.4s ease;
+      max-height 0.45s ease;
   }
 
 
   .tools_mega_menu.open {
-    max-height: 1300px;
+    max-height: 2200px;
+
+    overflow: visible;
 
     transform: none;
   }
 
 
+  /* =====================================================
+     MOBILE TOOLS INNER
+  ===================================================== */
+
   .tools_mega_inner {
+    width: 100%;
+
+    display: grid;
+
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
 
-    gap: 28px;
+    gap: 30px 24px;
 
     margin:
-      6px 0 15px;
+      8px 0 20px;
 
-    padding:
-      24px;
+    padding: 24px;
 
-    border-radius: 12px;
+    border:
+      1px solid rgba(168, 131, 92, 0.18);
 
-    background:
-      #faf8f4;
+    border-radius: 14px;
+
+    background: #faf8f4;
 
     box-shadow: none;
+
+    box-sizing: border-box;
   }
 
 
+  /* TOOL GROUP */
+
   .tools_group {
+    min-width: 0;
+
     padding: 0;
 
     border-right: none;
@@ -1212,8 +1231,40 @@ main {
   }
 
 
+  .tools_group_links {
+    gap: 14px;
+  }
+
+
   .tool_link {
     font-size: 0.88rem;
+
+    line-height: 1.4;
+  }
+
+
+  /* =====================================================
+     MOBILE SCROLLBAR
+  ===================================================== */
+
+  .header_container
+    > .header_links::-webkit-scrollbar {
+    width: 5px;
+  }
+
+
+  .header_container
+    > .header_links::-webkit-scrollbar-thumb {
+    background:
+      rgba(201, 169, 110, 0.55);
+
+    border-radius: 999px;
+  }
+
+
+  .header_container
+    > .header_links::-webkit-scrollbar-track {
+    background: transparent;
   }
 
 }
@@ -1229,15 +1280,15 @@ main {
   .header_container {
     min-height: 64px;
 
-    padding:
-      0 16px;
+    padding: 0 16px;
 
     gap: 10px;
   }
 
 
-  .header_container
-    > .logo {
+  /* LOGO */
+
+  .header_container > .logo {
     width: 105px;
   }
 
@@ -1258,13 +1309,11 @@ main {
     > .list_property_btn {
     min-height: 36px;
 
-    padding:
-      0 10px;
+    padding: 0 10px;
 
     gap: 5px;
 
-    font-size:
-      0.67rem;
+    font-size: 0.67rem;
   }
 
 
@@ -1272,13 +1321,13 @@ main {
     > .header_buttons
     > .list_property_btn
     > .free_btn {
-    padding:
-      2px 4px;
+    padding: 2px 4px;
 
-    font-size:
-      0.48rem;
+    font-size: 0.48rem;
   }
 
+
+  /* MENU BUTTON */
 
   .menu_toggle {
     width: 38px;
@@ -1286,10 +1335,19 @@ main {
   }
 
 
-  .header_container
-    > .header_links {
+  /* MOBILE NAV */
+
+  .header_container > .header_links {
+    top: 64px;
+
+    height:
+      calc(100dvh - 64px);
+
+    max-height:
+      calc(100dvh - 64px);
+
     padding:
-      8px 16px 18px;
+      8px 16px 50px;
   }
 
 
@@ -1298,20 +1356,37 @@ main {
   .tools_mega_inner {
     grid-template-columns: 1fr;
 
-    gap: 26px;
+    gap: 28px;
 
-    padding:
-      20px;
+    padding: 20px 18px;
+
+    margin:
+      8px 0 20px;
+  }
+
+
+  .tools_group_title {
+    font-size: 0.74rem;
   }
 
 
   .tools_group_links {
-    gap: 13px;
+    gap: 14px;
   }
 
 
   .tool_link {
+    min-height: 30px;
+
     font-size: 0.9rem;
+  }
+
+
+  .tool_link svg {
+    width: 17px;
+    height: 17px;
+
+    min-width: 17px;
   }
 
 }
@@ -1319,12 +1394,12 @@ main {
 
 /* =========================================================
    VERY SMALL MOBILE
+   <= 380PX
 ========================================================= */
 
 @media (max-width: 380px) {
 
-  .header_container
-    > .logo {
+  .header_container > .logo {
     width: 90px;
   }
 
@@ -1332,11 +1407,9 @@ main {
   .header_container
     > .header_buttons
     > .list_property_btn {
-    padding:
-      0 8px;
+    padding: 0 8px;
 
-    font-size:
-      0.6rem;
+    font-size: 0.6rem;
   }
 
 
@@ -1345,6 +1418,11 @@ main {
     > .list_property_btn
     > .free_btn {
     display: none;
+  }
+
+
+  .tools_mega_inner {
+    padding: 18px 14px;
   }
 
 }
