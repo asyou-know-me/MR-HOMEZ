@@ -1,78 +1,116 @@
-import { Link } from "react-router-dom";
+import {
+  Link,
+} from "react-router-dom";
 
-import { BsArrowRight } from "react-icons/bs";
-import { FaBuilding } from "react-icons/fa6";
+import {
+  BsArrowRight,
+} from "react-icons/bs";
 
-function OfferedPropertiesCard({ properties }) {
+import {
+  Building2,
+} from "lucide-react";
+
+
+function OfferedPropertiesCard({
+  categories,
+}) {
   return (
     <>
-      {properties.map((property) => (
-        <article
-          key={property.id}
-          className="offered_property_card"
-        >
+      {categories.map(
+        (category) => (
 
-          {/* IMAGE */}
-          <div className="offered_property_image">
+          <article
+            key={category.id}
+            className="offered_property_card"
+          >
 
-            {property.image ? (
-              <img
-                src={property.image}
-                alt={property.name}
-              />
-            ) : (
-              <div className="offered_property_image_placeholder">
-                <FaBuilding />
-              </div>
-            )}
+            {/* IMAGE */}
 
-          </div>
+            <div className="offered_property_image">
 
+              {category.imageUrl ? (
 
-          {/* CONTENT */}
-          <div className="offered_property_content">
+                <img
+                  src={
+                    category.imageUrl
+                  }
+                  alt={
+                    category.name
+                  }
+                />
 
-            <h3 className="offered_property_title">
-              {property.name}
-            </h3>
+              ) : (
 
+                <div className="offered_property_image_placeholder">
 
-            <p className="offered_property_about">
-              {property.about}
-            </p>
+                  <Building2 />
 
+                </div>
 
-            {/* TAGS */}
-            <div className="offered_property_specialities">
-
-              {property.specialities.map((speciality) => (
-                <span
-                  key={speciality}
-                  className="offered_property_tag"
-                >
-                  {speciality}
-                </span>
-              ))}
+              )}
 
             </div>
 
 
-            {/* LINK */}
-            <Link
-              to={property.path}
-              className="offered_property_btn"
-            >
-              {property.typeToExplore}
+            {/* CONTENT */}
 
-              <BsArrowRight />
-            </Link>
+            <div className="offered_property_content">
 
-          </div>
+              <h3 className="offered_property_title">
+                {category.name}
+              </h3>
 
-        </article>
-      ))}
+
+              <p className="offered_property_about">
+                {category.description}
+              </p>
+
+
+              {/* TAGS */}
+
+              <div className="offered_property_specialities">
+
+                {category.specialities?.map(
+                  (speciality) => (
+
+                    <span
+                      key={speciality}
+                      className="offered_property_tag"
+                    >
+                      {speciality}
+                    </span>
+
+                  )
+                )}
+
+              </div>
+
+
+              {/* LINK */}
+
+              <Link
+                to={
+                  category.linkPath ||
+                  "/properties"
+                }
+                className="offered_property_btn"
+              >
+
+                {category.buttonLabel}
+
+                <BsArrowRight />
+
+              </Link>
+
+            </div>
+
+          </article>
+
+        )
+      )}
     </>
   );
 }
+
 
 export default OfferedPropertiesCard;

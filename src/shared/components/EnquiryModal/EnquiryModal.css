@@ -1,0 +1,190 @@
+.enquiry_overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 5000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(7, 19, 45, 0.65);
+}
+
+.enquiry_modal {
+  position: relative;
+
+  width: min(500px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding: 35px;
+
+  border-radius: 16px;
+
+  background: white;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+.enquiry_close {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background: transparent;
+
+  color: #68768a;
+
+  cursor: pointer;
+}
+
+.enquiry_heading span {
+  color: #b28d52;
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.enquiry_heading h2 {
+  margin: 8px 0;
+
+  color: #152953;
+
+  font-size: 1.55rem;
+}
+
+.enquiry_heading p {
+  margin: 0 0 25px;
+
+  color: #7a8799;
+}
+
+.enquiry_form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 17px;
+}
+
+.enquiry_form > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.enquiry_form label {
+  color: #42526a;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+}
+
+.enquiry_form input,
+.enquiry_form textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 11px 12px;
+
+  border: 1px solid #dce1e7;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  font: inherit;
+}
+
+.enquiry_form input:focus,
+.enquiry_form textarea:focus {
+  border-color: #c9a96e;
+
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.12);
+}
+
+.enquiry_form button,
+.enquiry_success button {
+  min-height: 48px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #c9a96e;
+
+  color: #152953;
+
+  font: inherit;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.enquiry_error {
+  margin: 0;
+
+  color: #b42318;
+
+  font-size: 0.8rem;
+}
+
+.enquiry_success {
+  display: flex;
+
+  align-items: center;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  padding: 25px 5px;
+
+  text-align: center;
+}
+
+.enquiry_success > svg {
+  width: 48px;
+  height: 48px;
+
+  color: #3f8b53;
+}
+
+.enquiry_success h2 {
+  margin: 0;
+
+  color: #152953;
+}
+
+.enquiry_success p {
+  color: #748095;
+
+  line-height: 1.6;
+}
+
+.enquiry_success button {
+  width: 100%;
+}

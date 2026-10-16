@@ -1,77 +1,154 @@
-import PropertyCard from "./PropertyCard";
-import { BsArrowRight } from "react-icons/bs";
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import PropertyCard
+  from "./PropertyCard";
+
+import {
+  getFeaturedProperties,
+} from "../../../entities/property/property.api.js";
+
 
 function FeaturedProperties() {
-  const properties = [
-    {
-      id: 1,
-      name: "150 Gaj Triple-Storey Kothi for Sale in GMADA Sector 79, Mohali",
-      price: "Price on request",
-      location: "Mohali, Punjab",
-      image: "",
-      propertyType: "Villa",
-      squareFeets: "1,350",
-      specification: "",
-    },
-    {
-      id: 2,
-      name: "4 BHK Flat for Sale in Jubilee Vallum, Sector 91 Mohali",
-      price: "₹2.4 Cr",
-      location: "Mohali, Punjab",
-      image: "",
-      propertyType: "Apartment",
-      squareFeets: "3,256",
-      specification: "4 BHK",
-    },
-    {
-      id: 3,
-      name: "200 Sq Yard Residential Plot for Sale in Preet City, Sector 86 Mohali",
-      price: "₹2 Cr",
-      location: "Mohali, Punjab",
-      image: "",
-      propertyType: "Plot",
-      squareFeets: "1,800",
-      specification: "",
-    },
-    {
-      id: 4,
-      name: "200 Gaj Kothi for Sale in Wave Estate, Sector 85 Mohali",
-      price: "₹4.75 Cr",
-      location: "Mohali, Punjab",
-      image: "",
-      propertyType: "Villa",
-      squareFeets: "1,800",
-      specification: "",
-    },
-  ];
+  const [
+    properties,
+    setProperties,
+  ] = useState([]);
+
+  const [
+    loading,
+    setLoading,
+  ] = useState(true);
+
+  const [
+    error,
+    setError,
+  ] = useState("");
+
+
+  useEffect(() => {
+    const loadProperties = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response =
+          await getFeaturedProperties();
+
+        setProperties(
+          response.data || []
+        );
+
+      } catch (error) {
+        console.error(
+          "Featured properties error:",
+          error
+        );
+
+        setError(
+          "Unable to load featured properties."
+        );
+
+      } finally {
+        setLoading(false);
+      }
+    };
+
+
+    loadProperties();
+  }, []);
+
 
   return (
     <section className="featuredProperties_container">
+
       <div className="represent_properties">
-        {/* SECTION HEADING */}
+
+        {/* =================================
+            HEADER
+        ================================= */}
+
         <div className="featured_properties">
+
           <div className="featured_properties_content">
-            <h5>HANDPICKED</h5>
 
-            <h1>Featured Properties</h1>
+            <h5>
+              FEATURED PROPERTIES
+            </h5>
 
-            <p>Handpicked homes for sale and rent across India</p>
+            <h1>
+              Handpicked Properties
+              <span>
+                You'll Love.
+              </span>
+            </h1>
+
+            <p>
+              Explore verified properties
+              selected for location,
+              pricing and overall value.
+            </p>
+
           </div>
+
         </div>
 
-        {/* PROPERTY CARDS */}
+
+        {/* =================================
+            PROPERTY CARDS
+        ================================= */}
+
         <div className="properties_container">
-          <PropertyCard properties={properties} />
+
+          {/* LOADING */}
+
+          {loading && (
+            <div className="property_state">
+              Loading featured properties...
+            </div>
+          )}
+
+
+          {/* ERROR */}
+
+          {!loading && error && (
+            <div className="property_state property_error">
+              {error}
+            </div>
+          )}
+
+
+          {/* EMPTY */}
+
+          {!loading &&
+            !error &&
+            properties.length === 0 && (
+              <div className="property_state">
+                No featured properties
+                available right now.
+              </div>
+            )}
+
+
+          {/* DATA */}
+
+          {!loading &&
+            !error &&
+            properties.length > 0 && (
+              <PropertyCard
+                properties={properties}
+              />
+            )}
+
         </div>
 
-        {/* VIEW ALL BUTTON */}
-        <button type="button" className="all_properties">
-          View all properties
-          <BsArrowRight />
-        </button>
       </div>
+
     </section>
   );
 }
+
 
 export default FeaturedProperties;

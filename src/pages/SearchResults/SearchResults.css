@@ -1,0 +1,145 @@
+.search_results_page {
+  min-height: 70vh;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 60px 5% 80px;
+
+  overflow-x: hidden;
+
+  background: #f8f7f4;
+}
+
+
+.search_results_container {
+  width: min(1400px, 100%);
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   RESULTS GRID
+========================================================= */
+
+.search_results_grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(260px, 1fr)
+    );
+
+  gap: 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* Make card wrapper fit grid column */
+
+.search_results_grid
+.property_card_link {
+  width: 100%;
+
+  min-width: 0;
+
+  display: block;
+}
+
+
+/* Override homepage card width if necessary */
+
+.search_results_grid
+.property_card {
+  width: 100%;
+
+  max-width: none;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* Prevent image from causing overflow */
+
+.search_results_grid
+.property_card_image {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+
+.search_results_grid
+.property_card_image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+@media (
+  max-width: 1100px
+) {
+
+  .search_results_grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+
+}
+
+
+@media (
+  max-width: 800px
+) {
+
+  .search_results_grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+}
+
+
+@media (
+  max-width: 550px
+) {
+
+  .search_results_page {
+    padding:
+      40px 18px 60px;
+  }
+
+
+  .search_results_grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .search_results_header {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+}

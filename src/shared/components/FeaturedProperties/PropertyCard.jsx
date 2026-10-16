@@ -1,97 +1,81 @@
-import { IoMdPin } from "react-icons/io";
-import {
-  FaBed,
-  FaBuilding,
-} from "react-icons/fa6";
+import { BedDouble, Bath, Maximize, MapPin, Building2 } from "lucide-react";
 
-import { TbTextResize } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 function PropertyCard({ properties }) {
   return (
     <>
-      {properties.map((property) => (
-        <article
-          key={property.id}
-          className="property_card"
-        >
+      {properties.map((property) => {
+        const location = [property.locality, property.city]
+          .filter(Boolean)
+          .join(", ");
 
-          {/* IMAGE */}
-          <div className="property_card_image">
-            {property.image ? (
-              <img
-                src={property.image}
-                alt={property.name}
-              />
-            ) : (
-              <div className="property_image_placeholder">
-                <FaBuilding />
+        return (
+          <Link
+            key={property.id}
+            to={`/property/${property.id}`}
+            className="property_card_link"
+          >
+            <article className="property_card">
+              {/* IMAGE */}
+
+              <div className="property_card_image">
+                {property.imageUrl ? (
+                  <img src={property.imageUrl} alt={property.title} />
+                ) : (
+                  <div className="property_image_placeholder">
+                    <Building2 />
+                  </div>
+                )}
               </div>
-            )}
-          </div>
 
+              {/* CONTENT */}
 
-          {/* CONTENT */}
-          <div className="property_card_content">
-
-            <p className="property_card_price">
-              {property.price}
-            </p>
-
-
-            <h3 className="property_card_title">
-              {property.name}
-            </h3>
-
-
-            <p className="property_card_location">
-              <IoMdPin />
-
-              <span>
-                {property.location}
-              </span>
-            </p>
-
-
-            {/* SPECIFICATIONS */}
-            <div className="property_card_specifications">
-
-              {property.propertyType && (
-                <p className="one">
-                  <FaBuilding />
-
-                  <span>
-                    {property.propertyType}
-                  </span>
+              <div className="property_card_content">
+                <p className="property_card_price">
+                  ₹{Number(property.price).toLocaleString("en-IN")}
                 </p>
-              )}
 
+                <h3 className="property_card_title">{property.title}</h3>
 
-              {property.specification && (
-                <p className="two">
-                  <FaBed />
+                <p className="property_card_location">
+                  <MapPin />
 
-                  <span>
-                    {property.specification}
-                  </span>
+                  <span>{location || "Location unavailable"}</span>
                 </p>
-              )}
 
+                <div className="property_card_specifications">
+                  {property.bhk && (
+                    <p className="one">
+                      <BedDouble />
 
-              {property.squareFeets && (
-                <p className="three">
-                  <TbTextResize />
+                      <span>{property.bhk} BHK</span>
+                    </p>
+                  )}
 
-                  <span>
-                    {property.squareFeets} sq.ft
-                  </span>
-                </p>
-              )}
+                  {property.bathrooms && (
+                    <p className="two">
+                      <Bath />
 
-            </div>
+                      <span>{property.bathrooms} Bath</span>
+                    </p>
+                  )}
 
-          </div>
-        </article>
-      ))}
+                  {property.area && (
+                    <p className="three">
+                      <Maximize />
+
+                      <span>
+                        {property.area} {property.areaUnit || "sq.ft"}
+                      </span>
+                    </p>
+                  )}
+                </div>
+              </div>
+            </article>
+          </Link>
+        );
+      })}
     </>
   );
 }

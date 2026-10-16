@@ -3303,6 +3303,13 @@ main {
     scale(1.05);
 }
 
+.property_card_link {
+  display: block;
+
+  color: inherit;
+
+  text-decoration: none;
+}
 
 /* IMAGE PLACEHOLDER */
 
@@ -3834,6 +3841,161 @@ main {
     > .property_card_content
     > .property_card_specifications {
     gap: 10px;
+  }
+
+}
+.property_state {
+  grid-column: 1 / -1;
+
+  width: 100%;
+
+  padding: 50px 20px;
+
+  text-align: center;
+
+  color: #485a71;
+
+  font-size: 1rem;
+
+  font-weight: 500;
+}
+
+
+.property_error {
+  color: #b42318;
+}
+/* =========================================================
+   NEW LAUNCH CARD
+========================================================= */
+
+.property_card_image {
+  position: relative;
+}
+
+
+/* VERIFIED BADGE */
+
+.project_verified_badge {
+  position: absolute;
+
+  top: 14px;
+  left: 14px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  color: #1c2f5a;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 3px 12px
+    rgba(0, 0, 0, 0.1);
+}
+
+
+.project_verified_badge svg {
+  width: 14px;
+  height: 14px;
+
+  color: #c9a96e;
+}
+
+
+/* PRICE ONWARDS */
+
+.project_price_suffix {
+  font-size: 0.75rem;
+
+  font-weight: 500;
+
+  color: #68778b;
+}
+
+
+/* DEVELOPER */
+
+.project_developer {
+  margin: -5px 0 0;
+
+  color: #7a8799;
+
+  font-size: 0.78rem;
+
+  font-weight: 500;
+}
+
+
+/* PROJECT TAGS */
+
+.project_card_tags {
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.project_card_tags span {
+  padding: 5px 10px;
+
+  border:
+    1px solid
+    rgba(168, 131, 92, 0.55);
+
+  border-radius: 999px;
+
+  background:
+    rgba(244, 225, 185, 0.3);
+
+  color: #20335e;
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .project_verified_badge {
+    top: 10px;
+    left: 10px;
+
+    padding: 5px 8px;
+
+    font-size: 0.68rem;
+  }
+
+
+  .project_developer {
+    font-size: 0.75rem;
+  }
+
+
+  .project_card_tags span {
+    font-size: 0.67rem;
   }
 
 }
