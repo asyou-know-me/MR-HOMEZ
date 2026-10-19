@@ -1548,3 +1548,65 @@
   .admin_modal_footer button { flex: 1 1 120px; }
   .admin_stats_grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+
+/* Navigable dashboard summaries */
+a.admin_stat_card { text-decoration: none; color: inherit; }
+a.admin_stat_card:hover { border-color: #c9a96e; box-shadow: 0 4px 16px rgba(16,35,77,.08); }
+a.admin_stat_card:focus-visible { outline: 2px solid #b28d52; outline-offset: 3px; }
+
+@media (max-width: 800px) {
+  .admin_navigation {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+    gap: 10px;
+  }
+  .admin_navigation a {
+    min-width: 0;
+    min-height: 76px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    white-space: normal;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(255,255,255,.05);
+  }
+  .admin_navigation a:first-child { grid-column: 1 / -1; min-height: 48px; flex-direction: row; }
+  .admin_table_card { border: 0; background: transparent; overflow: visible; }
+  .admin_table_wrapper { overflow: visible; }
+  .admin_table, .admin_table tbody { display: block; width: 100%; }
+  .admin_table thead { display: none; }
+  .admin_table tbody tr {
+    display: block;
+    margin-bottom: 16px;
+    padding: 6px 16px;
+    border: 1px solid #e4e7ec;
+    border-radius: 14px;
+    background: white;
+  }
+  .admin_table td {
+    display: block;
+    padding: 12px 0;
+    overflow-wrap: anywhere;
+  }
+  .admin_table tbody tr td { border-bottom: 1px solid #eef0f3; }
+  .admin_table tbody tr td:last-child { border-bottom: 0; }
+  .admin_table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 7px;
+    color: #7a8799;
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .admin_property_cell, .admin_lead_customer, .admin_lead_contact { min-width: 0; }
+  .admin_property_cell > div:last-child { min-width: 0; }
+  .admin_property_cell strong { max-width: 100%; white-space: normal; }
+  .admin_lead_contact span { min-width: 0; overflow-wrap: anywhere; }
+  .admin_lead_contact svg { flex-shrink: 0; }
+  .admin_actions button { width: 42px; height: 42px; }
+  .admin_lead_status { min-height: 42px; }
+}

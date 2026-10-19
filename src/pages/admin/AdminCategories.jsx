@@ -310,7 +310,7 @@ function AdminCategories() {
                   <tr key={category.id}>
                     {/* CATEGORY */}
 
-                    <td>
+                    <td data-label="Category">
                       <div className="admin_property_cell">
                         <div className="admin_property_thumb">
                           {category.imageUrl ? (
@@ -330,7 +330,7 @@ function AdminCategories() {
 
                     {/* SPECIALITIES */}
 
-                    <td>
+                    <td data-label="Specialities">
                       <div className="admin_category_tags">
                         {category.specialities
                           ?.slice(0, 3)
@@ -342,11 +342,11 @@ function AdminCategories() {
 
                     {/* ORDER */}
 
-                    <td>{category.displayOrder}</td>
+                    <td data-label="Order">{category.displayOrder}</td>
 
                     {/* ACTIVE */}
 
-                    <td>
+                    <td data-label="Active">
                       <span
                         className={
                           category.active
@@ -360,7 +360,7 @@ function AdminCategories() {
 
                     {/* ACTIONS */}
 
-                    <td>
+                    <td data-label="Actions">
                       <div className="admin_actions">
                         <button
                           type="button"

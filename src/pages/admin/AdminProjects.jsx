@@ -350,7 +350,7 @@ function AdminProjects() {
               <tbody>
                 {projects.map((project) => (
                   <tr key={project.id}>
-                    <td>
+                    <td data-label="Project">
                       <div className="admin_property_cell">
                         <div className="admin_property_thumb">
                           {project.imageUrl ? (
@@ -370,13 +370,13 @@ function AdminProjects() {
                       </div>
                     </td>
 
-                    <td>
+                    <td data-label="Location">
                       {[project.locality, project.city]
                         .filter(Boolean)
                         .join(", ")}
                     </td>
 
-                    <td>
+                    <td data-label="Starting Price">
                       {project.startingPrice
                         ? `₹${Number(project.startingPrice).toLocaleString(
                             "en-IN",
@@ -384,15 +384,15 @@ function AdminProjects() {
                         : "Price on request"}
                     </td>
 
-                    <td>
+                    <td data-label="Launch Status">
                       <span className="admin_status_badge">
                         {project.launchStatus?.replaceAll("_", " ")}
                       </span>
                     </td>
 
-                    <td>{project.status}</td>
+                    <td data-label="Status">{project.status}</td>
 
-                    <td>
+                    <td data-label="Actions">
                       <div className="admin_actions">
                         <button
                           type="button"

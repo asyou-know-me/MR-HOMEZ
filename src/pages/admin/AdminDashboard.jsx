@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { Building2, FolderKanban, Tags, MessageSquare } from "lucide-react";
@@ -95,7 +96,7 @@ function AdminDashboard() {
       <div className="admin_stats_grid">
         {/* PROPERTIES */}
 
-        <div className="admin_stat_card">
+        <Link className="admin_stat_card" to="/admin/properties">
           <div className="admin_stat_icon">
             <Building2 />
           </div>
@@ -107,11 +108,11 @@ function AdminDashboard() {
 
             <small>Total listings</small>
           </div>
-        </div>
+        </Link>
 
         {/* PROJECTS */}
 
-        <div className="admin_stat_card">
+        <Link className="admin_stat_card" to="/admin/projects">
           <div className="admin_stat_icon">
             <FolderKanban />
           </div>
@@ -123,11 +124,11 @@ function AdminDashboard() {
 
             <small>Projects & launches</small>
           </div>
-        </div>
+        </Link>
 
         {/* CATEGORIES */}
 
-        <div className="admin_stat_card">
+        <Link className="admin_stat_card" to="/admin/categories">
           <div className="admin_stat_icon">
             <Tags />
           </div>
@@ -139,11 +140,11 @@ function AdminDashboard() {
 
             <small>Offered property types</small>
           </div>
-        </div>
+        </Link>
 
         {/* LEADS */}
 
-        <div className="admin_stat_card">
+        <Link className="admin_stat_card" to="/admin/enquiries">
           <div className="admin_stat_icon">
             <MessageSquare />
           </div>
@@ -157,7 +158,7 @@ function AdminDashboard() {
               {loading ? "Loading..." : `${stats.newLeads} new leads`}
             </small>
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );

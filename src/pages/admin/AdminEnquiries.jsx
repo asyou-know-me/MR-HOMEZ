@@ -184,7 +184,7 @@ function AdminEnquiries() {
                   <tr key={enquiry.id}>
                     {/* CUSTOMER */}
 
-                    <td>
+                    <td data-label="Customer">
                       <div className="admin_lead_customer">
                         <div className="admin_lead_avatar">
                           <UserRound />
@@ -200,7 +200,7 @@ function AdminEnquiries() {
 
                     {/* CONTACT */}
 
-                    <td>
+                    <td data-label="Contact">
                       <div className="admin_lead_contact">
                         <span>
                           <Phone />
@@ -220,7 +220,7 @@ function AdminEnquiries() {
 
                     {/* REFERENCE */}
 
-                    <td>
+                    <td data-label="Enquiring About">
                       {!enquiry.propertyId && !enquiry.projectId && <span>Listing no longer available</span>}
                       {enquiry.propertyId && (
                         <span className="admin_reference_badge" title={enquiry.propertyTitle || "Property unavailable"}>
@@ -237,7 +237,7 @@ function AdminEnquiries() {
 
                     {/* MESSAGE */}
 
-                    <td>
+                    <td data-label="Message">
                       <button type="button" className="admin_lead_message admin_enquiry_preview"
                         aria-label={`Read enquiry from ${enquiry.name}`}
                         onClick={() => setSelectedEnquiry(enquiry)}>
@@ -247,7 +247,7 @@ function AdminEnquiries() {
 
                     {/* DATE */}
 
-                    <td>
+                    <td data-label="Date">
                       <span className="admin_lead_date">
                         {formatDate(enquiry.createdAt)}
                       </span>
@@ -255,7 +255,7 @@ function AdminEnquiries() {
 
                     {/* STATUS */}
 
-                    <td>
+                    <td data-label="Status">
                       <select
                         className={`admin_lead_status status_${enquiry.status}`}
                         value={enquiry.status}
@@ -275,7 +275,7 @@ function AdminEnquiries() {
 
                     {/* DELETE */}
 
-                    <td>
+                    <td data-label="Action">
                       <div className="admin_actions">
                         <button type="button" title="View enquiry"
                           aria-label={`View enquiry from ${enquiry.name}`}

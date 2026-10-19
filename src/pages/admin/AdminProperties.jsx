@@ -374,7 +374,7 @@ function AdminProperties() {
               <tbody>
                 {properties.map((property) => (
                   <tr key={property.id}>
-                    <td>
+                    <td data-label="Property">
                       <div className="admin_property_cell">
                         <div className="admin_property_thumb">
                           {property.imageUrl ? (
@@ -392,23 +392,23 @@ function AdminProperties() {
                       </div>
                     </td>
 
-                    <td>
+                    <td data-label="Location">
                       {[property.locality, property.city]
                         .filter(Boolean)
                         .join(", ")}
                     </td>
 
-                    <td>₹{Number(property.price).toLocaleString("en-IN")}</td>
+                    <td data-label="Price">₹{Number(property.price).toLocaleString("en-IN")}</td>
 
-                    <td>
+                    <td data-label="Status">
                       <span className="admin_status_badge">
                         {property.status}
                       </span>
                     </td>
 
-                    <td>{property.featured ? "Yes" : "No"}</td>
+                    <td data-label="Featured">{property.featured ? "Yes" : "No"}</td>
 
-                    <td>
+                    <td data-label="Actions">
                       <div className="admin_actions">
                         <button
                           type="button"
