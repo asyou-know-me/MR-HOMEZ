@@ -1472,3 +1472,24 @@
 
   color: #667085;
 }
+
+.admin_enquiry_preview {
+  display: block;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.admin_enquiry_dialog {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  width: min(680px, calc(100% - 32px));
+}
+.admin_enquiry_dialog::backdrop { background: rgba(6, 18, 45, 0.58); }
+.admin_enquiry_details { padding: 24px; color: #18264d; overflow-wrap: anywhere; }
+.admin_enquiry_details p { margin: 0 0 12px; }
+.admin_enquiry_details h3 { margin: 24px 0 12px; }
+.admin_enquiry_full_message { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.6; }
