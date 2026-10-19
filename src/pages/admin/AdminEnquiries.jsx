@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { Mail, Phone, Trash2, UserRound, MessageSquare } from "lucide-react";
+import { Mail, Phone, Trash2, UserRound, MessageSquare, Eye, X } from "lucide-react";
 
 import {
   getEnquiries,
@@ -12,6 +12,17 @@ import "./admin.css";
 
 function AdminEnquiries() {
   const [enquiries, setEnquiries] = useState([]);
+  const [selectedEnquiry, setSelectedEnquiry] = useState(null);
+  const dialogRef = useRef(null);
+
+  useEffect(() => {
+    if (selectedEnquiry && !dialogRef.current.open) dialogRef.current.showModal();
+  }, [selectedEnquiry]);
+
+  const closeEnquiry = () => {
+    dialogRef.current.close();
+    setSelectedEnquiry(null);
+  };
 
   const [loading, setLoading] = useState(true);
 
@@ -220,9 +231,11 @@ function AdminEnquiries() {
                     {/* MESSAGE */}
 
                     <td>
-                      <div className="admin_lead_message">
+                      <button type="button" className="admin_lead_message admin_enquiry_preview"
+                        aria-label={`Read enquiry from ${enquiry.name}`}
+                        onClick={() => setSelectedEnquiry(enquiry)}>
                         {enquiry.message || "No message"}
-                      </div>
+                      </button>
                     </td>
 
                     {/* DATE */}
@@ -257,6 +270,9 @@ function AdminEnquiries() {
 
                     <td>
                       <div className="admin_actions">
+                        <button type="button" title="View enquiry"
+                          aria-label={`View enquiry from ${enquiry.name}`}
+                          onClick={() => setSelectedEnquiry(enquiry)}><Eye /></button>
                         <button
                           type="button"
                           title="Delete enquiry"
@@ -274,6 +290,29 @@ function AdminEnquiries() {
           </div>
         )}
       </div>
+      <dialog ref={dialogRef} className="admin_modal admin_enquiry_dialog"
+        aria-labelledby="enquiry-dialog-title"
+        onClose={() => setSelectedEnquiry(null)}
+        onClick={(event) => { if (event.target === event.currentTarget) closeEnquiry(); }}>
+        {selectedEnquiry && <>
+          <div className="admin_modal_header">
+            <div>
+              <h2 id="enquiry-dialog-title">Enquiry from {selectedEnquiry.name}</h2>
+              <p>Lead #{selectedEnquiry.id} · {formatDate(selectedEnquiry.createdAt)}</p>
+            </div>
+            <button type="button" aria-label="Close enquiry" onClick={closeEnquiry} autoFocus><X /></button>
+          </div>
+          <div className="admin_enquiry_details">
+            <p><strong>Phone:</strong> {selectedEnquiry.phone}</p>
+            <p><strong>Email:</strong> {selectedEnquiry.email || "Not provided"}</p>
+            <p><strong>Status:</strong> {selectedEnquiry.status}</p>
+            {selectedEnquiry.propertyId && <p><strong>Property:</strong> #{selectedEnquiry.propertyId}</p>}
+            {selectedEnquiry.projectId && <p><strong>Project:</strong> #{selectedEnquiry.projectId}</p>}
+            <h3>Customer message</h3>
+            <div className="admin_enquiry_full_message">{selectedEnquiry.message || "No message provided."}</div>
+          </div>
+        </>}
+      </dialog>
     </section>
   );
 }
