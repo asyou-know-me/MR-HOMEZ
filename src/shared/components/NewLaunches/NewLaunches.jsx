@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   useEffect,
   useState,
@@ -140,7 +141,8 @@ function NewLaunches() {
             !error &&
             projects.length > 0 && (
               <NewLaunchCard
-                projects={projects}
+                projects={projects.slice(0, 8)}
+                enquiryOnClick
               />
             )}
 
@@ -154,14 +156,11 @@ function NewLaunches() {
         {!loading &&
           !error &&
           projects.length > 0 && (
-            <button
-              type="button"
-              className="all_properties"
-            >
+            <Link to="/projects" className="all_properties">
               View all projects
 
               <BsArrowRight />
-            </button>
+            </Link>
           )}
 
       </div>

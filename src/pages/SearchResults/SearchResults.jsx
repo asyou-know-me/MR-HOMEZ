@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 import { Search } from "lucide-react";
 
@@ -16,6 +16,7 @@ import "./SearchResults.css";
 
 function SearchResults() {
   const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
 
   const [results, setResults] = useState([]);
 
@@ -23,7 +24,10 @@ function SearchResults() {
 
   const [error, setError] = useState("");
 
-  const mode = searchParams.get("mode") || "properties";
+  const mode = pathname === "/projects" || pathname === "/new-launch"
+    ? "projects" : pathname === "/properties" ? "properties"
+    : searchParams.get("mode") || "properties";
+  const isNewLaunch = pathname === "/new-launch" || searchParams.get("launchStatus") === "new_launch";
 
   /* =================================================
      LOAD SEARCH RESULTS
@@ -47,7 +51,7 @@ function SearchResults() {
           */
 
         if (mode === "projects") {
-          const launchStatus = searchParams.get("launchStatus") || "";
+          const launchStatus = pathname === "/new-launch" ? "new_launch" : searchParams.get("launchStatus") || "";
 
           const status = searchParams.get("status") || "active";
 
@@ -117,13 +121,13 @@ function SearchResults() {
     };
 
     loadResults();
-  }, [searchParams, mode]);
+  }, [searchParams, mode, pathname]);
 
   /* =================================================
      TITLE
   ================================================= */
 
-  const title = mode === "projects" ? "Projects & New Launches" : "Properties";
+  const title = isNewLaunch ? "New Launches" : mode === "projects" ? "Projects" : "Properties";
 
   return (
     <main className="search_results_page">
@@ -178,7 +182,7 @@ function SearchResults() {
         {!loading && !error && results.length > 0 && (
           <div className="search_results_grid">
             {mode === "projects" ? (
-              <NewLaunchCard projects={results} />
+              <NewLaunchCard projects={results} enquiryOnClick={isNewLaunch} />
             ) : (
               <PropertyCard properties={results} />
             )}

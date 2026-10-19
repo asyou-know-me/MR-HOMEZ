@@ -143,3 +143,16 @@
   }
 
 }
+/* Enquiry cards retain the same appearance as linked listing cards. */
+button.property_card_link {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+button.property_card_link:focus-visible { outline: 2px solid #b28d52; outline-offset: 4px; }
+a.all_properties { text-decoration: none; }

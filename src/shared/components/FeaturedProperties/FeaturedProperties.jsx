@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   useEffect,
   useState,
@@ -138,12 +139,15 @@ function FeaturedProperties() {
             !error &&
             properties.length > 0 && (
               <PropertyCard
-                properties={properties}
+                properties={properties.slice(0, 8)}
               />
             )}
 
         </div>
 
+        <Link to="/properties" className="all_properties">
+          View all Properties →
+        </Link>
       </div>
 
     </section>

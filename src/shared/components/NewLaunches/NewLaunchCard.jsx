@@ -1,8 +1,12 @@
+import { useState } from "react";
+import EnquiryModal from "../EnquiryModal/EnquiryModal";
 import { MapPin, Building2, BadgeCheck } from "lucide-react";
 
 import { Link } from "react-router-dom";
 
-function NewLaunchCard({ projects }) {
+function NewLaunchCard({ projects, enquiryOnClick = false }) {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const CardWrapper = enquiryOnClick ? "button" : Link;
   return (
     <>
       {projects.map((project) => {
@@ -15,9 +19,11 @@ function NewLaunchCard({ projects }) {
           : null;
 
         return (
-          <Link
+          <CardWrapper
             key={project.id}
-            to={`/project/${project.id}`}
+            {...(enquiryOnClick
+              ? { type: "button", onClick: () => setSelectedProject(project), "aria-label": `Enquire about ${project.name}` }
+              : { to: `/project/${project.id}` })}
             className="property_card_link"
           >
             <article key={project.id} className="property_card">
@@ -93,9 +99,13 @@ function NewLaunchCard({ projects }) {
                 </div>
               </div>
             </article>
-          </Link>
+          </CardWrapper>
         );
       })}
+      {selectedProject && (
+        <EnquiryModal key={selectedProject.id} projectId={selectedProject.id}
+          title={selectedProject.name} onClose={() => setSelectedProject(null)} />
+      )}
     </>
   );
 }

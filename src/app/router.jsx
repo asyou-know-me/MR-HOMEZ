@@ -30,6 +30,18 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path: "/properties",
+        element: <SearchResults />,
+      },
+      {
+        path: "/projects",
+        element: <SearchResults />,
+      },
+      {
+        path: "/new-launch",
+        element: <SearchResults />,
+      },
+      {
         path: "/search",
         element: <SearchResults />,
       },
