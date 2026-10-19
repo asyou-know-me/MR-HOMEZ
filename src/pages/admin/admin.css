@@ -1493,3 +1493,58 @@
 .admin_enquiry_details p { margin: 0 0 12px; }
 .admin_enquiry_details h3 { margin: 24px 0 12px; }
 .admin_enquiry_full_message { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.6; }
+
+/* Mobile admin layout */
+.admin_layout, .admin_layout * { box-sizing: border-box; }
+.admin_table_card, .admin_content, .admin_main { min-width: 0; }
+.admin_table_wrapper { max-width: 100%; -webkit-overflow-scrolling: touch; }
+
+@media (max-width: 800px) {
+  .admin_layout { flex-direction: column; }
+  .admin_sidebar { width: 100%; min-height: auto; }
+  .admin_sidebar_brand { height: 60px; padding: 0 18px; }
+  .admin_navigation {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 10px 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin_navigation a { flex: 0 0 auto; padding: 12px; white-space: nowrap; }
+  .admin_sidebar_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 18px;
+  }
+  .admin_user { min-width: 0; margin: 0; }
+  .admin_user span { overflow-wrap: anywhere; }
+  .admin_sidebar_footer button { width: auto; flex-shrink: 0; padding: 10px 14px; }
+  .admin_main { width: 100%; }
+  .admin_topbar { height: 54px; padding: 0 18px; }
+  .admin_content { padding: 20px 14px; }
+  .admin_page_header { flex-wrap: wrap; gap: 12px; }
+  .admin_page_heading { min-width: 0; margin-bottom: 14px; }
+  .admin_page_heading h1 { font-size: 1.5rem; overflow-wrap: anywhere; }
+  .admin_page_heading p { line-height: 1.5; }
+  .admin_modal_overlay { padding: 12px; }
+  .admin_modal { max-width: 100%; max-height: 90dvh; }
+  .admin_enquiry_dialog { max-width: calc(100% - 24px); }
+  .admin_modal_header { padding: 18px; gap: 12px; }
+  .admin_modal_header > div { min-width: 0; overflow-wrap: anywhere; }
+  .admin_modal_header > button { flex-shrink: 0; }
+  .admin_property_form, .admin_image_grid, .admin_category_image_preview { padding: 18px; }
+  .admin_image_upload { padding: 18px; }
+}
+
+@media (max-width: 550px) {
+  .admin_page_header { flex-direction: column; align-items: stretch; }
+  .admin_page_header > button { width: 100%; }
+  .admin_lead_count { align-items: flex-start; }
+  .admin_form_grid { grid-template-columns: minmax(0, 1fr); }
+  .admin_modal_footer { flex-wrap: wrap; }
+  .admin_modal_footer button { flex: 1 1 120px; }
+  .admin_stats_grid { grid-template-columns: minmax(0, 1fr); }
+}
