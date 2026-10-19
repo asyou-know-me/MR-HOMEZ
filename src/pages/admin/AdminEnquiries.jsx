@@ -10,6 +10,9 @@ import {
 
 import "./admin.css";
 
+const shortenListingName = (name) =>
+  name.length > 18 ? `${name.slice(0, 18).trimEnd()}.....` : name;
+
 function AdminEnquiries() {
   const [enquiries, setEnquiries] = useState([]);
   const [selectedEnquiry, setSelectedEnquiry] = useState(null);
@@ -217,14 +220,14 @@ function AdminEnquiries() {
                     <td>
                       {!enquiry.propertyId && !enquiry.projectId && <span>Listing no longer available</span>}
                       {enquiry.propertyId && (
-                        <span className="admin_reference_badge">
-                          {enquiry.propertyTitle || "Property unavailable"}
+                        <span className="admin_reference_badge" title={enquiry.propertyTitle || "Property unavailable"}>
+                          {shortenListingName(enquiry.propertyTitle || "Property unavailable")}
                         </span>
                       )}
 
                       {enquiry.projectId && (
-                        <span className="admin_reference_badge">
-                          {enquiry.projectName || "Project unavailable"}
+                        <span className="admin_reference_badge" title={enquiry.projectName || "Project unavailable"}>
+                          {shortenListingName(enquiry.projectName || "Project unavailable")}
                         </span>
                       )}
                     </td>
