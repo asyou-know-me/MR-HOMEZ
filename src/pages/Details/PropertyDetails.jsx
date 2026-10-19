@@ -81,7 +81,7 @@ function PropertyDetails() {
         {/* GALLERY */}
 
         {images.length > 0 ? (
-          <div className="details_gallery">
+          <div className={`details_gallery ${images.length === 1 ? "single_image_gallery" : ""}`}>
             <div className="details_main_image">
               <img src={images[0].imageUrl} alt={property.title} />
             </div>
