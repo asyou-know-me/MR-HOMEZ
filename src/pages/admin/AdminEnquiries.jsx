@@ -215,15 +215,16 @@ function AdminEnquiries() {
                     {/* REFERENCE */}
 
                     <td>
+                      {!enquiry.propertyId && !enquiry.projectId && <span>Listing no longer available</span>}
                       {enquiry.propertyId && (
                         <span className="admin_reference_badge">
-                          Property #{enquiry.propertyId}
+                          {enquiry.propertyTitle || "Property unavailable"}
                         </span>
                       )}
 
                       {enquiry.projectId && (
                         <span className="admin_reference_badge">
-                          Project #{enquiry.projectId}
+                          {enquiry.projectName || "Project unavailable"}
                         </span>
                       )}
                     </td>
@@ -306,8 +307,9 @@ function AdminEnquiries() {
             <p><strong>Phone:</strong> {selectedEnquiry.phone}</p>
             <p><strong>Email:</strong> {selectedEnquiry.email || "Not provided"}</p>
             <p><strong>Status:</strong> {selectedEnquiry.status}</p>
-            {selectedEnquiry.propertyId && <p><strong>Property:</strong> #{selectedEnquiry.propertyId}</p>}
-            {selectedEnquiry.projectId && <p><strong>Project:</strong> #{selectedEnquiry.projectId}</p>}
+            {selectedEnquiry.propertyId && <p><strong>Property:</strong> {selectedEnquiry.propertyTitle || "Property unavailable"}</p>}
+            {selectedEnquiry.projectId && <p><strong>Project:</strong> {selectedEnquiry.projectName || "Project unavailable"}</p>}
+            {!selectedEnquiry.propertyId && !selectedEnquiry.projectId && <p>Listing no longer available</p>}
             <h3>Customer message</h3>
             <div className="admin_enquiry_full_message">{selectedEnquiry.message || "No message provided."}</div>
           </div>
