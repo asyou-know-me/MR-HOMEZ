@@ -1,3 +1,4 @@
+import useAdminFeedback from "../../shared/components/AdminFeedback/useAdminFeedback";
 import { useEffect, useRef, useState } from "react";
 
 import { Mail, Phone, Trash2, UserRound, MessageSquare, Eye, X } from "lucide-react";
@@ -14,6 +15,7 @@ const shortenListingName = (name) =>
   name.length > 18 ? `${name.slice(0, 18).trimEnd()}.....` : name;
 
 function AdminEnquiries() {
+  const { showNotice, askConfirmation, feedbackDialog } = useAdminFeedback();
   const [enquiries, setEnquiries] = useState([]);
   const [selectedEnquiry, setSelectedEnquiry] = useState(null);
   const dialogRef = useRef(null);
@@ -77,7 +79,7 @@ function AdminEnquiries() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to update status.");
+      showNotice(error.response?.data?.message || "Unable to update status.");
     }
   };
 
@@ -86,7 +88,7 @@ function AdminEnquiries() {
   ===================================================== */
 
   const handleDelete = async (enquiry) => {
-    const confirmed = window.confirm(`Delete enquiry from "${enquiry.name}"?`);
+    const confirmed = await askConfirmation(`Delete enquiry from "${enquiry.name}"?`);
 
     if (!confirmed) {
       return;
@@ -101,7 +103,7 @@ function AdminEnquiries() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to delete enquiry.");
+      showNotice(error.response?.data?.message || "Unable to delete enquiry.");
     }
   };
 
@@ -123,6 +125,7 @@ function AdminEnquiries() {
 
   return (
     <section>
+      {feedbackDialog}
       {/* HEADER */}
 
       <div className="admin_page_header">

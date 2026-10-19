@@ -1,3 +1,4 @@
+import useAdminFeedback from "../../shared/components/AdminFeedback/useAdminFeedback";
 import { useEffect, useState } from "react";
 
 import { Edit3, Image, Plus, Tags, Trash2, Upload, X } from "lucide-react";
@@ -23,6 +24,7 @@ const emptyForm = {
 };
 
 function AdminCategories() {
+  const { showNotice, askConfirmation, feedbackDialog } = useAdminFeedback();
   const [categories, setCategories] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -166,7 +168,7 @@ function AdminCategories() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to save category.");
+      showNotice(error.response?.data?.message || "Unable to save category.");
     } finally {
       setSaving(false);
     }
@@ -177,7 +179,7 @@ function AdminCategories() {
   ===================================================== */
 
   const handleDelete = async (category) => {
-    const confirmed = window.confirm(`Delete "${category.name}"?`);
+    const confirmed = await askConfirmation(`Delete "${category.name}"?`);
 
     if (!confirmed) {
       return;
@@ -190,7 +192,7 @@ function AdminCategories() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to delete category.");
+      showNotice(error.response?.data?.message || "Unable to delete category.");
     }
   };
 
@@ -212,7 +214,7 @@ function AdminCategories() {
 
   const handleImageUpload = async () => {
     if (!selectedImage) {
-      alert("Please select an image.");
+      showNotice("Please select an image.");
 
       return;
     }
@@ -238,7 +240,7 @@ function AdminCategories() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to upload image.");
+      showNotice(error.response?.data?.message || "Unable to upload image.");
     } finally {
       setUploading(false);
     }
@@ -246,6 +248,7 @@ function AdminCategories() {
 
   return (
     <section>
+      {feedbackDialog}
       {/* =================================================
           PAGE HEADER
       ================================================= */}

@@ -1,0 +1,23 @@
+.admin_feedback_dialog {
+  width: min(460px, calc(100% - 32px));
+  max-height: 85vh;
+  overflow-y: auto;
+  margin: auto;
+  padding: 24px;
+  box-sizing: border-box;
+  border: 1px solid #e0e4e8;
+  border-radius: 16px;
+  background: white;
+  color: #18264d;
+  box-shadow: 0 24px 80px rgba(6,18,45,.25);
+}
+.admin_feedback_dialog::backdrop { background: rgba(6,18,45,.58); }
+.admin_feedback_heading { display: flex; align-items: center; gap: 12px; }
+.admin_feedback_heading h2 { flex: 1; margin: 0; font-size: 1.15rem; }
+.admin_feedback_icon { color: #b28d52; display: flex; }
+.admin_feedback_heading > button { display: flex; border: 0; background: transparent; color: #657287; cursor: pointer; }
+.admin_feedback_dialog > p { margin: 20px 0 24px; line-height: 1.6; overflow-wrap: anywhere; white-space: pre-wrap; }
+.admin_feedback_actions { display: flex; justify-content: flex-end; gap: 10px; }
+.admin_feedback_actions button { padding: 10px 20px; border: 1px solid #dce1e8; border-radius: 8px; background: #f8f7f4; color: #18264d; font: inherit; cursor: pointer; }
+.admin_feedback_actions .admin_feedback_delete { background: #b42318; border-color: #b42318; color: white; }
+.admin_feedback_dialog button:focus-visible { outline: 2px solid #b28d52; outline-offset: 3px; }

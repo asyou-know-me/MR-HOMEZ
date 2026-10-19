@@ -1,3 +1,4 @@
+import useAdminFeedback from "../../shared/components/AdminFeedback/useAdminFeedback";
 import { useEffect, useState } from "react";
 
 import {
@@ -39,6 +40,7 @@ const emptyForm = {
 };
 
 function AdminProjects() {
+  const { showNotice, askConfirmation, feedbackDialog } = useAdminFeedback();
   const [projects, setProjects] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -176,7 +178,7 @@ function AdminProjects() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to save project.");
+      showNotice(error.response?.data?.message || "Unable to save project.");
     } finally {
       setSaving(false);
     }
@@ -187,7 +189,7 @@ function AdminProjects() {
   =============================================== */
 
   const handleDelete = async (project) => {
-    const confirmed = window.confirm(`Delete "${project.name}"?`);
+    const confirmed = await askConfirmation(`Delete "${project.name}"?`);
 
     if (!confirmed) {
       return;
@@ -200,7 +202,7 @@ function AdminProjects() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to delete project.");
+      showNotice(error.response?.data?.message || "Unable to delete project.");
     }
   };
 
@@ -244,7 +246,7 @@ function AdminProjects() {
 
   const handleImageUpload = async () => {
     if (!selectedFiles.length) {
-      alert("Select at least one image.");
+      showNotice("Select at least one image.");
 
       return;
     }
@@ -262,14 +264,14 @@ function AdminProjects() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to upload images.");
+      showNotice(error.response?.data?.message || "Unable to upload images.");
     } finally {
       setUploading(false);
     }
   };
 
   const handleDeleteImage = async (imageId) => {
-    const confirmed = window.confirm("Delete this image?");
+    const confirmed = await askConfirmation("Delete this image?");
 
     if (!confirmed) {
       return;
@@ -284,12 +286,13 @@ function AdminProjects() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to delete image.");
+      showNotice(error.response?.data?.message || "Unable to delete image.");
     }
   };
 
   return (
     <section>
+      {feedbackDialog}
       {/* PAGE HEADER */}
 
       <div className="admin_page_header">

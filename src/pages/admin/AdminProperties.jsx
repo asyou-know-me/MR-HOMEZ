@@ -1,3 +1,4 @@
+import useAdminFeedback from "../../shared/components/AdminFeedback/useAdminFeedback";
 import { useEffect, useState } from "react";
 
 import {
@@ -42,6 +43,7 @@ const emptyForm = {
 };
 
 function AdminProperties() {
+  const { showNotice, askConfirmation, feedbackDialog } = useAdminFeedback();
   const [properties, setProperties] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -196,7 +198,7 @@ function AdminProperties() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to save property.");
+      showNotice(error.response?.data?.message || "Unable to save property.");
     } finally {
       setSaving(false);
     }
@@ -207,7 +209,7 @@ function AdminProperties() {
   ===================================================== */
 
   const handleDelete = async (property) => {
-    const confirmed = window.confirm(`Delete "${property.title}"?`);
+    const confirmed = await askConfirmation(`Delete "${property.title}"?`);
 
     if (!confirmed) {
       return;
@@ -220,7 +222,7 @@ function AdminProperties() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to delete property.");
+      showNotice(error.response?.data?.message || "Unable to delete property.");
     }
   };
 
@@ -264,7 +266,7 @@ function AdminProperties() {
 
   const handleImageUpload = async () => {
     if (!selectedFiles.length) {
-      alert("Select at least one image.");
+      showNotice("Select at least one image.");
 
       return;
     }
@@ -282,14 +284,14 @@ function AdminProperties() {
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Unable to upload images.");
+      showNotice(error.response?.data?.message || "Unable to upload images.");
     } finally {
       setUploading(false);
     }
   };
 
   const handleDeleteImage = async (imageId) => {
-    const confirmed = window.confirm("Delete this image?");
+    const confirmed = await askConfirmation("Delete this image?");
 
     if (!confirmed) {
       return;
@@ -304,12 +306,13 @@ function AdminProperties() {
     } catch (error) {
       console.error(error);
 
-      alert("Unable to delete image.");
+      showNotice("Unable to delete image.");
     }
   };
 
   return (
     <section>
+      {feedbackDialog}
       {/* =================================================
           PAGE HEADER
       ================================================= */}
