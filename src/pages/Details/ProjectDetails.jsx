@@ -80,7 +80,7 @@ function ProjectDetails() {
 
             {images.length > 1 && (
               <div className="details_side_images">
-                {images.slice(1, 3).map((image) => (
+                {images.slice(1).map((image) => (
                   <div key={image.id} className="details_side_image">
                     <img src={image.imageUrl} />
                   </div>
