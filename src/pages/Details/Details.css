@@ -428,3 +428,57 @@
     display: none;
   }
 }
+
+/* Desktop: retain the main photo + two secondary photos */
+@media (min-width: 851px) {
+  .details_side_image:nth-child(n + 3) {
+    display: none;
+  }
+}
+
+/* Mobile/tablet: swipe through every photo */
+@media (max-width: 850px) {
+  .details_gallery,
+  .details_gallery.single_image_gallery {
+    display: flex;
+    gap: 12px;
+    height: auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    overscroll-behavior-x: contain;
+    padding-bottom: 12px;
+    scrollbar-width: thin;
+  }
+
+  .details_gallery .details_side_images {
+    display: contents;
+  }
+
+  .details_gallery.single_image_gallery .details_side_images {
+    display: none;
+  }
+
+  .details_gallery .details_main_image,
+  .details_gallery .details_side_image {
+    flex: 0 0 90%;
+    width: 90%;
+    height: clamp(240px, 65vw, 400px);
+    min-width: 0;
+    overflow: hidden;
+    scroll-snap-align: start;
+    border-radius: 14px;
+  }
+
+  .details_gallery.single_image_gallery .details_main_image {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .details_gallery img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
