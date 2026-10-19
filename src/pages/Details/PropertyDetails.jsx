@@ -27,6 +27,7 @@ function PropertyDetails() {
   const [error, setError] = useState("");
 
   const [showEnquiry, setShowEnquiry] = useState(false);
+  const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
     const loadProperty = async () => {
@@ -38,6 +39,7 @@ function PropertyDetails() {
         const response = await getPropertyById(id);
 
         setProperty(response.data);
+        setActiveImage(0);
       } catch (error) {
         console.error(error);
 
@@ -81,18 +83,25 @@ function PropertyDetails() {
         {/* GALLERY */}
 
         {images.length > 0 ? (
-          <div className="details_gallery">
-            <div className="details_main_image">
-              <img src={images[0].imageUrl} alt={property.title} />
+          <div className="details_property_gallery">
+            <div className="details_property_photo">
+              <img src={images[activeImage]?.imageUrl || images[0].imageUrl}
+                alt={`${property.title} — photo ${activeImage + 1}`} />
+              <span className="details_photo_count">{activeImage + 1} / {images.length}</span>
             </div>
-
-            <div className="details_side_images">
-              {images.slice(1, 3).map((image) => (
-                <div key={image.id} className="details_side_image">
-                  <img src={image.imageUrl} alt={property.title} />
-                </div>
-              ))}
-            </div>
+            {images.length > 1 && (
+              <div className="details_photo_thumbnails" aria-label="Property photos">
+                {images.map((image, index) => (
+                  <button key={image.id || index} type="button"
+                    className={activeImage === index ? "is_active" : ""}
+                    aria-label={`Show property photo ${index + 1}`}
+                    aria-pressed={activeImage === index}
+                    onClick={() => setActiveImage(index)}>
+                    <img src={image.imageUrl} alt="" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         ) : (
           <div className="details_no_image">
